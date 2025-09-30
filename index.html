@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 250px;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+    input, select, button {
+      margin: 8px 0;
+      padding: 10px;
+      width: 90%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Kalkulator</h2>
+    <input type="number" id="angka1" placeholder="Masukkan angka pertama">
+    <input type="number" id="angka2" placeholder="Masukkan angka kedua">
+
+    <select id="operasi">
+      <option value="+">Tambah (+)</option>
+      <option value="-">Kurang (-)</option>
+      <option value="*">Kali (×)</option>
+      <option value="/">Bagi (÷)</option>
+    </select>
+
+    <button onclick="hitung()">Hitung</button>
+  </div>
+
+  <script>
+    function hitung() {
+      let a = parseFloat(document.getElementById("angka1").value);
+      let b = parseFloat(document.getElementById("angka2").value);
+      let operasi = document.getElementById("operasi").value;
+      let hasil;
+
+      if (isNaN(a) || isNaN(b)) {
+        alert("Harap isi kedua angka terlebih dahulu!");
+        return;
+      }
+
+      switch (operasi) {
+        case "+": hasil = a + b; break;
+        case "-": hasil = a - b; break;
+        case "*": hasil = a * b; break;
+        case "/": 
+          if (b === 0) {
+            alert("Tidak bisa dibagi dengan nol!");
+            return;
+          }
+          hasil = a / b; 
+          break;
+        default: hasil = "Operasi tidak dikenali";
+      }
+      alert("Hasil: " + hasil);
+    }
+  </script>
+</body>
+</html>
+
